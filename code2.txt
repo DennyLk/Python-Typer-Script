@@ -1,0 +1,28 @@
+this.model = model;
+this.view = view;
+
+this.view.coffee.addEventListener("change", this.handleFormChange);
+this.view.quantity.addEventListener("change", this.handleFormChange);
+this.view.form.addEventListener("change", this.handleFormChange);
+this.view.form.addEventListener("submit", this.handleFormSubmit);
+this.view.showBtn.addEventListener("click", this.handleFormShow);
+
+handleFormChange = (event) => {
+let input = event.target;
+
+this.model[input.id] = input.value;
+
+if (this.model.quantity == 0) {
+this.view.renderLog(this.model.coffee, this.model.price);
+else {
+this.view.renderLog(this.model.quantity,
+this.model.coffee,
+this.model.price * this.model.quantity);
+
+handleFormShow = (event) => {
+this.view.renderImg(this.model.coffee);
+
+handleFormSubmit = (event) => {
+event.preventDefault();
+this.model.persist();
+

@@ -1,0 +1,17 @@
+
+this.form = document.getElementById("form-order");
+this.coffee = document.getElementById("coffee");
+this.quantity = document.getElementById("quantity");
+this.price = document.getElementById("price");
+this.logDiv = document.getElementById("div-order");
+this.imgDiv = document.getElementById("div-cofee-image");
+this.showBtn = document.getElementById("button-show");
+
+renderImg(coffeType) {
+let imgSrc = `./media/${coffeType}.png`;
+let elem = document.createElement("img");
+elem.setAttribute("src", imgSrc);
+document.getElementById("div-coffee-order").replaceChildren(elem);
+
+renderLog(quantity,coffeType, price) {
+this.logDiv.innerHTML = `<p>You have ordered ${quantity} ${coffeType}(s) that cost(s) ${price} kunas.</p>`;
